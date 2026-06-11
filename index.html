@@ -11,11 +11,11 @@
 <link rel="icon" type="image/svg+xml" href='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 36"><circle cx="18" cy="18" r="14" fill="none" stroke="%23C8102E" stroke-width="3"/><path d="M18 1v5M18 30v5M1 18h5M30 18h5" stroke="%23C8102E" stroke-width="3" stroke-linecap="round"/><circle cx="18" cy="18" r="5.5" fill="%23E8A33D"/></svg>'>
 <style>
   :root{
-    --bg:#FFFFFF; --bg-soft:#F7F8F9;
-    --ink:#15181C; --muted:#5B6470; --line:#E6E9ED;
+    --bg:#FAF7F4; --bg-soft:#EFE8E1;
+    --ink:#15181C; --muted:#625851; --line:#DDD4CB;
     --hero-bg:#0E1016; --hero-card:#1A1E24;
-    --dark-grad: linear-gradient(160deg, #0C0E14 0%, #160A10 45%, #0C0F18 100%);
-    --dark-grad-alt: linear-gradient(145deg, #0A0C12 0%, #14080F 50%, #0A0D16 100%);
+    --dark-grad: linear-gradient(160deg, #111320 0%, #1D0D14 45%, #111420 100%);
+    --dark-grad-alt: linear-gradient(145deg, #0F1220 0%, #1B0C13 50%, #0F1220 100%);
     --red:#C8102E; --red-bright:#F03A52; --red-dark:#A30D26; --red-tint:#FBEFF1;
     --green:#147A4D; --green-bright:#35C285; --green-tint:#EDF7F2;
     --amber:#E8A33D;
@@ -394,21 +394,26 @@
   .toast.show{transform:translate(-50%,0);opacity:1}
   .toast .ok{color:#7BE0AE;font-weight:700}
 
-  /* ---------- compare ---------- */
-  .vs-table{margin-top:50px;background:#fff;border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);overflow-x:auto}
+  /* ---------- compare (dark section) ---------- */
+  #compare{background:var(--dark-grad-alt);color:#fff}
+  #compare .kicker{color:var(--red-bright)}
+  #compare h2{color:#fff}
+  #compare .sub{color:#AEB5BF}
+  .vs-table{margin-top:50px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:var(--radius);box-shadow:0 4px 32px rgba(0,0,0,.4);overflow-x:auto}
   table{width:100%;border-collapse:collapse;min-width:580px}
-  th,td{padding:18px 24px;text-align:left;font-size:.94rem;border-bottom:1px solid var(--line)}
-  thead th{font-family:var(--display);font-weight:700;font-size:.9rem;border-bottom:2px solid var(--line)}
-  thead th.rk{color:var(--red)}
-  td{color:var(--muted)}
-  td:first-child{color:var(--ink);font-weight:500}
+  th,td{padding:18px 24px;text-align:left;font-size:.94rem;border-bottom:1px solid rgba(255,255,255,.08)}
+  thead th{font-family:var(--display);font-weight:700;font-size:.9rem;border-bottom:2px solid rgba(255,255,255,.12);color:#D6DAE0}
+  thead th.rk{color:var(--red-bright)}
+  td{color:#8A919C}
+  td:first-child{color:#C8CDD5;font-weight:500}
   tbody tr{transition:background .15s}
-  tbody tr:hover{background:#FBFBFC}
+  tbody tr:hover{background:rgba(255,255,255,.04)}
   tbody tr:last-child td{border-bottom:none}
-  .tick{color:var(--green);font-weight:600}
-  .cross{color:#9AA3AE}
+  .tick{color:var(--green-bright);font-weight:600}
+  .cross{color:#4A5160}
 
   /* ---------- guarantee ---------- */
+  .guarantee-section{background:var(--dark-grad-alt)}
   .guarantee{background:linear-gradient(135deg,#0E5C3A,#147A4D);color:#fff;border-radius:22px;padding:56px 50px;display:flex;gap:42px;align-items:center;flex-wrap:wrap;box-shadow:var(--shadow-lg);text-align:left;position:relative;overflow:hidden}
   .guarantee::after{content:"";position:absolute;right:-80px;top:-80px;width:280px;height:280px;border-radius:50%;background:rgba(255,255,255,.06)}
   .guarantee h2{color:#fff}
@@ -418,6 +423,7 @@
   .guarantee .btn:hover{background:#EDF7F2}
 
   /* ---------- reviews ---------- */
+  #reviews{background:var(--bg)}
   .quotes{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:52px}
   .quote{background:#fff;border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:30px 26px;text-align:left;transition:transform .2s, box-shadow .2s}
   .quote:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg)}
@@ -428,6 +434,7 @@
   @media(max-width:860px){.quotes{grid-template-columns:1fr}}
 
   /* ---------- faq ---------- */
+  #faq{background:var(--bg-soft)}
   .faq-list{max-width:780px;margin:46px auto 0;text-align:left}
   details{border-bottom:1px solid var(--line)}
   summary{cursor:pointer;font-weight:600;font-size:1rem;padding:22px 8px;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:16px}
@@ -1085,7 +1092,7 @@
   </section>
 
   <!-- GUARANTEE -->
-  <section style="padding-top:0">
+  <section class="guarantee-section" style="padding-top:0">
     <div class="wrap">
       <div class="guarantee reveal">
         <div class="g-badge">30-DAY<br>ROACH-FREE<br>GUARANTEE</div>
@@ -1100,7 +1107,7 @@
   </section>
 
   <!-- REVIEWS -->
-  <section id="reviews" style="padding-top:0">
+  <section id="reviews">
     <div class="wrap center">
       <p class="kicker reveal">Reviews</p>
       <h2 class="reveal">Trusted in kitchens across India</h2>
