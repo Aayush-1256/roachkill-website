@@ -429,13 +429,20 @@
   /* ---------- reviews ---------- */
   #reviews{background:var(--bg)}
   .quotes{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:52px}
-  .quote{background:#fff;border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:30px 26px;text-align:left;transition:transform .2s, box-shadow .2s}
+  .quote{background:#fff;border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:30px 26px;text-align:left;transition:transform .2s, box-shadow .2s;overflow:visible}
   .quote:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg)}
-  .quote .stars{margin-bottom:14px}
-  .quote p{font-size:.94rem;color:var(--muted)}
-  .quote .who{margin-top:18px;font-size:.86rem;font-weight:600;color:var(--ink)}
-  .quote .who span{display:block;font-weight:500;color:var(--muted);font-size:.8rem}
-  @media(max-width:860px){.quotes{grid-template-columns:1fr}}
+  .quote .stars{margin-bottom:14px;font-size:1rem;letter-spacing:2px}
+  .quote p{font-size:.96rem;color:var(--muted);line-height:1.7}
+  .quote .who{margin-top:18px;font-size:.88rem;font-weight:600;color:var(--ink)}
+  .quote .who span{display:block;font-weight:500;color:var(--muted);font-size:.82rem;margin-top:2px}
+  @media(max-width:860px){.quotes{grid-template-columns:1fr;max-width:560px;margin-left:auto;margin-right:auto}}
+  @media(max-width:640px){
+    .quotes{max-width:none;gap:16px;margin-top:24px}
+    .quote{padding:22px 20px}
+    .quote p{font-size:.9rem;line-height:1.68}
+    .quote .who{margin-top:12px;font-size:.84rem}
+    .quote .who span{font-size:.78rem}
+  }
 
   /* ---------- faq ---------- */
   #faq{background:var(--bg-soft)}
@@ -629,13 +636,7 @@
     .guarantee p{font-size:.85rem}
     .guarantee .btn{padding:.65rem 1.2rem;font-size:.85rem;margin-top:10px}
 
-    /* --- reviews: stacked cards, simple and readable --- */
-    .quotes{display:flex;flex-direction:column;gap:14px;margin-top:20px}
-    .quote{padding:20px 18px;border-radius:14px}
-    .quote .stars{font-size:.85rem;margin-bottom:10px}
-    .quote p{font-size:.88rem;line-height:1.65;color:var(--muted)}
-    .quote .who{margin-top:14px;font-size:.82rem;font-weight:600;color:var(--ink)}
-    .quote .who span{display:block;font-size:.76rem;font-weight:400;color:var(--muted);margin-top:2px}
+    /* reviews handled in own breakpoints above */
 
     /* --- faq --- */
     .faq-list{margin-top:16px}
@@ -661,7 +662,6 @@
     h1{font-size:1.8rem}
     .hero-inner{padding:14px 0 24px;gap:12px}
     .stage{width:68vw;max-width:240px}
-    .quote{min-width:70vw}
   }
 
   :focus-visible{outline:3px solid var(--red-bright);outline-offset:2px;border-radius:4px}
