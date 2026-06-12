@@ -122,11 +122,6 @@
   .ra-num{color:var(--amber);font-weight:700}
   .ra-big{color:#fff;font-weight:800;font-size:1.05rem}
   .ra-sub{display:block;font-size:.78rem;color:#9AA3AE;margin-top:2px}
-  @media(max-width:480px){
-    .roach-alert{padding:12px 14px;gap:10px}
-    .ra-roach{width:34px;height:17px}
-    .ra-big{font-size:.95rem}
-  }
 
   /* product stage with hotspots */
   .stage{grid-area:img;align-self:center;position:relative;perspective:1100px}
@@ -264,10 +259,6 @@
     .prob-card-big{padding:24px 20px}
     .prob-num{font-size:2.6rem}
   }
-  @media(max-width:480px){
-    .problem-section{padding:60px 0}
-    .prob-stat-card{padding:16px 16px}
-  }
 
   /* ---------- results timeline (visual colony grid) ---------- */
   .timeline-card{margin-top:54px;background:#fff;border:1px solid var(--line);border-radius:20px;box-shadow:var(--shadow);padding:44px 46px;text-align:left}
@@ -364,6 +355,7 @@
   .map-info p{color:var(--muted);font-size:.95rem}
   .map-info .tip{margin-top:16px;font-size:.85rem;background:var(--green-tint);color:#0F5C3A;border-radius:10px;padding:10px 14px;display:inline-block}
   .spot-dots{display:flex;gap:8px;margin-top:22px}
+  .spot-dots-mobile{display:none} /* shown only in mobile CSS */
   .spot-dots button{width:34px;height:34px;border-radius:50%;border:1.5px solid var(--line);background:#fff;font-weight:700;font-family:var(--display);cursor:pointer;color:var(--muted);transition:all .15s}
   .spot-dots button.active,.spot-dots button:hover{background:var(--red);border-color:var(--red);color:#fff}
   @media(max-width:920px){.map-grid{grid-template-columns:1fr}}
@@ -474,21 +466,6 @@
   .legal{border-top:1px solid #23272D;padding-top:28px;font-size:.78rem;line-height:1.75;color:#7C828C}
   @media(max-width:860px){.f-grid{grid-template-columns:1fr 1fr}}
   @media(max-width:560px){.f-grid{grid-template-columns:1fr}}
-  @media(max-width:480px){
-    .guarantee{padding:36px 24px;gap:24px;flex-direction:column;align-items:flex-start}
-    .g-badge{width:96px;height:96px;font-size:.72rem}
-    .quotes{gap:14px}
-    .quote{padding:22px 18px}
-    footer{padding:48px 0 32px}
-    .f-grid{gap:28px}
-    .topbar{font-size:.72rem;padding:.4rem 12px}
-  }
-  @media(max-width:360px){
-    .nav{height:60px}
-    .logo{font-size:1.15rem}
-    .logo .mark{width:28px;height:28px}
-    .nav .btn{padding:.45rem .9rem;font-size:.82rem}
-  }
 
   /* =============================================
      MOBILE — single clean block, no patches
@@ -567,9 +544,9 @@
     .prob-stat-cta .psc-body{align-items:center;text-align:center;width:100%}
     .prob-stat-cta .psc-body b{
       font-size:.88rem;color:#35C285;
-      justify-content:center;flex-wrap:wrap;gap:6px;
+      justify-content:center;align-items:flex-start;gap:6px;
     }
-    .prob-stat-cta .psc-body b svg{flex:none}
+    .prob-stat-cta .psc-body b span{flex:1;text-align:center}
 
     /* --- results timeline --- */
     .timeline-card{margin-top:18px;padding:16px 14px;border-radius:14px}
@@ -769,7 +746,7 @@
 
       <!-- description + CTAs block -->
       <div class="hero-below">
-        <p class="lede">The cockroach you see is only <strong>5% of the infestation</strong>. RoachKill gel reaches the hidden nest behind your kitchen — and ends the entire colony at its source. Quietly. Without a single spray.</p>
+        <p class="lede">The cockroach you see is only <strong>5% of the infestation</strong>. RoachKill gel ends the entire colony at its source — no sprays, no smell, no fuss.</p>
         <p class="hindi">रोचकिल — जड़ से ख़त्म</p>
         <div class="hero-ctas">
           <a class="btn btn-primary" href="#products">Shop RoachKill — ₹179</a>
@@ -899,8 +876,8 @@
           <div class="prob-stat-card prob-stat-cta">
             <div class="psc-body">
               <b>
-                <svg width="15" height="15" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex:none" aria-hidden="true"><path d="M3 8l3.5 3.5L13 4.5" stroke="#35C285" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                RoachKill targets the nest — not just the roach you see
+                <svg width="15" height="15" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex:none;flex-shrink:0;margin-top:1px" aria-hidden="true"><path d="M3 8l3.5 3.5L13 4.5" stroke="#35C285" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <span>RoachKill targets the nest — not just the roach you see</span>
               </b>
             </div>
           </div>
@@ -1185,8 +1162,8 @@
         <div class="g-badge">30-DAY<br>ROACH-FREE<br>GUARANTEE</div>
         <div>
           <p class="kicker" style="color:#9FD8BC">Our promise</p>
-          <h2>Still seeing cockroaches after 30 days? Full refund.</h2>
-          <p>Follow the placement guide included in every pack. If your home isn't visibly roach-free within 30 days, we'll refund the full amount — no return shipping, no questions asked.</p>
+          <h2>Still seeing cockroaches after 30 days? We make it right.</h2>
+          <p>Follow the placement guide included in every pack. If your home isn't visibly roach-free within 30 days, we'll make it right — no return shipping, no questions asked.</p>
           <a class="btn" href="#products">Try it risk-free</a>
         </div>
       </div>
