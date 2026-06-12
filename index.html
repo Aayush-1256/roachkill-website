@@ -629,27 +629,10 @@
     .guarantee p{font-size:.85rem}
     .guarantee .btn{padding:.65rem 1.2rem;font-size:.85rem;margin-top:10px}
 
-    /* --- reviews: one card at a time, swipe for next --- */
-    #reviews .wrap{padding:0}
-    #reviews .center{padding:0 20px}
-    .quotes{
-      display:flex;
-      overflow-x:auto;
-      scroll-snap-type:x mandatory;
-      -webkit-overflow-scrolling:touch;
-      scrollbar-width:none;
-      gap:12px;
-      padding:0 20px 4px;
-      margin-top:16px;
-    }
-    .quotes::-webkit-scrollbar{display:none}
-    .quote{
-      min-width:calc(100vw - 52px);
-      flex-shrink:0;
-      scroll-snap-align:start;
-      padding:22px 20px;
-    }
-    .quote .stars{font-size:.84rem;margin-bottom:10px}
+    /* --- reviews: stacked cards, simple and readable --- */
+    .quotes{display:flex;flex-direction:column;gap:14px;margin-top:20px}
+    .quote{padding:20px 18px;border-radius:14px}
+    .quote .stars{font-size:.85rem;margin-bottom:10px}
     .quote p{font-size:.88rem;line-height:1.65;color:var(--muted)}
     .quote .who{margin-top:14px;font-size:.82rem;font-weight:600;color:var(--ink)}
     .quote .who span{display:block;font-size:.76rem;font-weight:400;color:var(--muted);margin-top:2px}
