@@ -490,26 +490,31 @@
     .logo{font-size:1.2rem}
     .logo .mark{width:28px;height:28px}
 
-    /* --- HERO: headline → image → description, everything centred --- */
+    /* --- HERO --- */
     .hero-inner{
       display:flex;flex-direction:column;align-items:center;
       text-align:center;
-      padding:24px 0 32px;gap:16px;
+      padding:16px 0 28px;gap:14px;
     }
     .hero-above{width:100%;padding-bottom:0}
-    .hero-eyebrow{font-size:.68rem;margin-bottom:10px;justify-content:center;gap:.35rem}
+    .hero-eyebrow{font-size:.68rem;margin-bottom:8px;justify-content:center;gap:.35rem}
     .hero-eyebrow::before{width:14px}
     h1{font-size:2rem;line-height:1.07;text-align:center}
-    .stage{width:58vw;max-width:210px;flex:none;float:none;margin:0}
+    /* bigger image, hotspots visible as icon-only dots */
+    .stage{width:72vw;max-width:270px;flex:none;float:none;margin:0}
     .stage-glow{display:none}
     .stage-img-wrap{border-radius:16px;box-shadow:0 14px 40px rgba(0,0,0,.6)}
-    .hp,.stage-hint{display:none}
+    .stage-hint{display:none}
+    /* show hotspot circles (icon only, no text) */
+    .hp{display:inline-flex;font-size:0;padding:.3rem;gap:0;border-radius:50%;background:rgba(255,255,255,.92)}
+    .hp .hp-ic{font-size:.85rem;width:22px;height:22px}
+    .hp .hp-ic::before{inset:-4px}
     .hero-below{width:100%;text-align:center}
-    .hero p.lede{font-size:.88rem;line-height:1.58;margin:0 0 14px;max-width:none;color:#AEB5BF}
+    .hero p.lede{font-size:.86rem;line-height:1.56;margin:0 0 12px;max-width:none;color:#AEB5BF}
     .hindi{display:none}
-    .hero-ctas{flex-direction:column;gap:9px;align-items:stretch}
-    .hero-ctas .btn{width:100%;justify-content:center;padding:.8rem 1.2rem;font-size:.9rem}
-    .proof{margin-top:12px;font-size:.78rem;gap:.4rem;justify-content:center}
+    .hero-ctas{flex-direction:column;gap:8px;align-items:stretch}
+    .hero-ctas .btn{width:100%;justify-content:center;padding:.65rem 1rem;font-size:.84rem}
+    .proof{margin-top:10px;font-size:.76rem;gap:.4rem;justify-content:center}
     .roach-alert{display:none}
 
     /* --- problem section --- */
@@ -526,6 +531,12 @@
     .prob-stat-card:nth-child(1){display:none}
     .prob-stat-card:nth-child(2){display:none}
     .prob-stat-card:nth-child(3){display:none}
+    /* "RoachKill targets the nest" — plain centred text, no card box */
+    .prob-stat-card.prob-stat-cta{background:transparent;border:none;padding:8px 0 0;align-items:center;text-align:center}
+    .prob-stat-cta .psc-body{align-items:center}
+    .prob-stat-cta .psc-body b{font-size:.88rem;color:#35C285}
+    .prob-stat-cta .psc-body span{font-size:.8rem;text-align:center}
+    .prob-stat-cta a.btn{display:none}
 
     /* --- results timeline --- */
     .timeline-card{margin-top:18px;padding:16px 14px;border-radius:14px}
@@ -548,38 +559,33 @@
     .step h3{font-size:.9rem;margin-bottom:2px}
     .step p{font-size:.82rem;line-height:1.5}
 
-    /* --- kitchen map --- */
+    /* --- kitchen map: show diagram + spot title only, no long explanation --- */
     .map-grid{margin-top:16px}
     .kitchen-stage{padding:12px}
-    .map-info{padding:18px 16px;min-height:230px;display:flex;flex-direction:column}
-    .map-info .spot-num{width:28px;height:28px;font-size:.82rem;margin-bottom:8px}
-    .map-info h3{font-size:.95rem;margin-bottom:5px}
-    .map-info p{font-size:.83rem;line-height:1.52;flex:1}
-    .map-info .tip{font-size:.75rem;padding:7px 10px;margin-top:8px}
-    .spot-dots{margin-top:auto;padding-top:10px;gap:6px}
+    .map-info{padding:14px 16px;min-height:auto;display:flex;flex-direction:column;gap:8px}
+    .map-info .spot-num{width:26px;height:26px;font-size:.8rem;margin-bottom:0}
+    .map-info h3{font-size:.92rem;margin-bottom:0}
+    .map-info p{display:none}
+    .map-info .tip{display:none}
+    .spot-dots{padding-top:4px;gap:6px;margin-top:0}
     .spot-dots button{width:30px;height:30px;font-size:.78rem}
 
-    /* --- products: swipe carousel, compact cards --- */
+    /* --- products: 2-column grid so all products are visible --- */
     .prod-grid{
       margin-top:16px;
-      display:flex;overflow-x:auto;
-      scroll-snap-type:x mandatory;
-      -webkit-overflow-scrolling:touch;
-      scrollbar-width:none;
-      gap:10px;padding-bottom:14px;
+      display:grid;grid-template-columns:1fr 1fr;
+      gap:10px;overflow:visible;padding-bottom:0;
     }
-    .prod-grid::-webkit-scrollbar{display:none}
-    .prod{min-width:66vw;flex:none;scroll-snap-align:start;padding:16px 14px}
-    .prod-art{height:110px;margin-bottom:12px;border-radius:10px}
-    .prod h3{font-size:.92rem}
-    .prod .desc{font-size:.8rem;margin:5px 0 10px;line-height:1.5}
-    .prod .tag{font-size:.65rem;margin-bottom:10px;padding:.26rem .7rem}
-    .price{font-size:1.2rem}
-    .price small{font-size:.7rem}
-    .qty-row{gap:7px;margin-top:10px}
-    .qty-row .btn{flex:1;padding:.6rem .8rem;font-size:.82rem}
-    .qty button{width:32px;height:34px;font-size:1rem}
-    .qty input{width:32px;font-size:.88rem}
+    .prod{min-width:0;flex:none;padding:12px 10px}
+    .prod-art{height:82px;margin-bottom:10px;border-radius:10px}
+    .prod h3{font-size:.8rem;line-height:1.3;letter-spacing:-.01em}
+    .prod .desc{display:none}
+    .prod .tag{font-size:.6rem;margin-bottom:8px;padding:.22rem .6rem}
+    .price{font-size:.95rem;letter-spacing:-.01em}
+    .price small{display:none}
+    .qty{display:none}
+    .qty-row{margin-top:8px;gap:0}
+    .qty-row .btn{flex:1;width:100%;padding:.55rem .4rem;font-size:.74rem}
 
     /* --- compare: simple 3-col tick/cross table --- */
     .vs-table{margin-top:16px;border-radius:12px;overflow:hidden}
@@ -614,7 +620,7 @@
     .guarantee p{font-size:.85rem}
     .guarantee .btn{padding:.65rem 1.2rem;font-size:.85rem;margin-top:10px}
 
-    /* --- reviews: swipe, compact, readable --- */
+    /* --- reviews: compact swipe, 1.5 cards visible --- */
     .quotes{
       display:flex;flex-wrap:nowrap;
       overflow-x:auto;scroll-snap-type:x mandatory;
@@ -622,11 +628,14 @@
       gap:10px;margin-top:16px;padding-bottom:8px;
     }
     .quotes::-webkit-scrollbar{display:none}
-    .quote{min-width:68vw;flex:none;scroll-snap-align:start;padding:16px 14px}
-    .quote .stars{font-size:.78rem;letter-spacing:1px;margin-bottom:8px}
-    .quote p{font-size:.8rem;line-height:1.55;color:var(--muted)}
-    .quote .who{margin-top:10px;font-size:.76rem}
-    .quote .who span{font-size:.7rem}
+    .quote{min-width:58vw;flex:none;scroll-snap-align:start;padding:14px 12px}
+    .quote .stars{font-size:.74rem;letter-spacing:1px;margin-bottom:7px}
+    .quote p{
+      font-size:.76rem;line-height:1.52;color:var(--muted);
+      display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden;
+    }
+    .quote .who{margin-top:8px;font-size:.72rem}
+    .quote .who span{font-size:.68rem}
 
     /* --- faq --- */
     .faq-list{margin-top:16px}
@@ -650,10 +659,9 @@
   @media(max-width:390px){
     .wrap{padding:0 16px}
     h1{font-size:1.8rem}
-    .hero-inner{padding:20px 0 28px;gap:14px}
-    .stage{width:54vw;max-width:190px}
-    .prod{min-width:76vw}
-    .quote{min-width:76vw}
+    .hero-inner{padding:14px 0 24px;gap:12px}
+    .stage{width:68vw;max-width:240px}
+    .quote{min-width:70vw}
   }
 
   :focus-visible{outline:3px solid var(--red-bright);outline-offset:2px;border-radius:4px}
