@@ -337,10 +337,14 @@
   /* ---------- kitchen map ---------- */
   .map-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:44px;align-items:center;margin-top:52px}
   .kitchen-stage{background:#fff;border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:22px}
-  .hotspot{cursor:pointer}
+  .hotspot{cursor:pointer;transform-box:fill-box;transform-origin:center;transition:transform .28s cubic-bezier(.34,1.56,.64,1)}
   .hotspot circle.ring{fill:rgba(200,16,46,.14);transition:fill .2s}
-  .hotspot circle.core{fill:var(--red)}
-  .hotspot.active circle.ring{fill:rgba(200,16,46,.3)}
+  .hotspot circle.core{fill:var(--red);transition:fill .2s}
+  .hotspot.active{transform:scale(1.35)}
+  .hotspot.active circle.ring{fill:rgba(200,16,46,.45)!important}
+  .hotspot.active circle.core{fill:var(--red-bright)!important}
+  @keyframes spotFlash{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+  .spot-flash{animation:spotFlash .28s ease forwards}
   .hotspot .pulse{animation:hpulse 2s ease-out infinite;transform-origin:center;transform-box:fill-box}
   @keyframes hpulse{0%{opacity:.7;transform:scale(.6)}80%{opacity:0;transform:scale(1.9)}100%{opacity:0}}
   .map-info{background:#fff;border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:32px 30px;text-align:left;min-height:250px}
@@ -505,22 +509,34 @@
     .hero-eyebrow{font-size:.68rem;margin-bottom:8px;justify-content:center;gap:.35rem}
     .hero-eyebrow::before{width:14px}
     h1{font-size:2rem;line-height:1.07;text-align:center}
-    /* bigger image, hotspots visible as icon-only dots */
-    .stage{width:72vw;max-width:270px;flex:none;float:none;margin:0}
+    /* image + hotspots */
+    .stage{width:72vw;max-width:270px;flex:none;float:none;margin:0;overflow:visible}
     .stage-glow{display:none}
-    .stage-img-wrap{border-radius:16px;box-shadow:0 14px 40px rgba(0,0,0,.6)}
+    .stage-img-wrap{border-radius:16px;box-shadow:0 14px 40px rgba(0,0,0,.6);overflow:visible}
     .stage-hint{display:none}
-    /* hotspot circles: icon only, no popup card on mobile */
-    .hp{display:inline-flex;font-size:0;padding:.28rem;gap:0;border-radius:50%;background:rgba(255,255,255,.9)}
+    /* hotspot: tappable circle — shows label-only popup below image */
+    .hp{display:inline-flex;font-size:0;padding:.28rem;gap:0;border-radius:50%;background:rgba(255,255,255,.92)}
     .hp .hp-ic{font-size:.82rem;width:20px;height:20px}
     .hp .hp-ic::before{inset:-3px}
-    #hpCard{display:none!important}
+    /* hp-card: label only, centred below image */
+    #hpCard{
+      top:auto!important;bottom:-44px!important;
+      left:50%!important;transform:translateX(-50%);
+      width:auto!important;max-width:88vw!important;
+      padding:7px 14px!important;text-align:center;white-space:nowrap;
+    }
+    #hpCard span{display:none!important}
+    #hpCard b{font-size:.82rem!important;margin-bottom:0!important}
+    /* hero text below image */
     .hero-below{width:100%;text-align:center}
-    .hero p.lede{font-size:.86rem;line-height:1.56;margin:0 0 12px;max-width:none;color:#AEB5BF}
+    .hero p.lede{
+      font-size:.86rem;line-height:1.55;margin:0 0 12px;max-width:none;color:#AEB5BF;
+      display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;
+    }
     .hindi{display:none}
     .hero-ctas{flex-direction:column;gap:8px;align-items:stretch}
-    .hero-ctas .btn{width:100%;justify-content:center;padding:.65rem 1rem;font-size:.84rem}
-    .proof{margin-top:10px;font-size:.76rem;gap:.4rem;justify-content:center}
+    .hero-ctas .btn{width:100%;justify-content:center;padding:.62rem .9rem;font-size:.82rem}
+    .proof{margin-top:10px;font-size:.75rem;gap:.4rem;justify-content:center}
     .roach-alert{display:none}
 
     /* --- problem section --- */
@@ -625,20 +641,19 @@
     .guarantee p{font-size:.85rem}
     .guarantee .btn{padding:.65rem 1.2rem;font-size:.85rem;margin-top:10px}
 
-    /* --- reviews: 2-col grid, all visible, compact --- */
+    /* --- reviews: full-width single card, swipe for next --- */
     .quotes{
-      display:grid;grid-template-columns:1fr 1fr;
-      gap:10px;margin-top:16px;
-      overflow:visible;padding-bottom:0;
+      display:flex;flex-wrap:nowrap;
+      overflow-x:auto;scroll-snap-type:x mandatory;
+      -webkit-overflow-scrolling:touch;scrollbar-width:none;
+      gap:12px;margin-top:16px;padding-bottom:4px;
     }
-    .quote{min-width:0;padding:12px 10px}
-    .quote .stars{font-size:.7rem;letter-spacing:.5px;margin-bottom:6px}
-    .quote p{
-      font-size:.74rem;line-height:1.5;color:var(--muted);
-      display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden;
-    }
-    .quote .who{margin-top:8px;font-size:.7rem}
-    .quote .who span{font-size:.65rem}
+    .quotes::-webkit-scrollbar{display:none}
+    .quote{min-width:100%;flex:none;scroll-snap-align:start;padding:22px 20px;box-sizing:border-box}
+    .quote .stars{font-size:.82rem;letter-spacing:1px;margin-bottom:10px}
+    .quote p{font-size:.88rem;line-height:1.65;color:var(--muted)}
+    .quote .who{margin-top:14px;font-size:.82rem}
+    .quote .who span{font-size:.76rem}
 
     /* --- faq --- */
     .faq-list{margin-top:16px}
@@ -1427,6 +1442,9 @@
     document.getElementById('spotTip').textContent=SPOTS[i].tip;
     hotspots.forEach(h=>h.classList.toggle('active',+h.dataset.spot===i));
     dotBtns.forEach(b=>{const on=+b.dataset.spot===i;b.classList.toggle('active',on);b.setAttribute('aria-selected',on);});
+    /* flash the info panel on change */
+    const mi=document.getElementById('mapInfo');
+    if(mi){mi.classList.remove('spot-flash');void mi.offsetWidth;mi.classList.add('spot-flash');}
   }
   /* cockroach swarm around 200+ */
   const probSwarm=document.getElementById('probSwarm');
