@@ -248,8 +248,11 @@
     border-radius:16px;padding:20px 22px;display:flex;gap:16px;align-items:flex-start;color:#fff;
   }
   .prob-stat-card.prob-stat-cta{
-    background:rgba(53,194,133,.06);border-color:rgba(53,194,133,.2);
-    flex-direction:column;
+    background:rgba(53,194,133,.07);border-color:rgba(53,194,133,.25);
+  }
+  .prob-stat-cta .psc-body b{
+    color:#35C285;font-size:1rem;
+    display:flex;align-items:center;gap:8px;
   }
   .psc-icon{flex:none;width:50px;height:40px;display:flex;align-items:center;justify-content:center;background:rgba(200,16,46,.12);border-radius:10px;padding:6px}
   .psc-icon-warning{background:rgba(232,163,61,.10)}
@@ -537,10 +540,7 @@
     #hpCard b{font-size:.82rem!important;margin-bottom:0!important}
     /* hero text below image */
     .hero-below{width:100%;text-align:center}
-    .hero p.lede{
-      font-size:.86rem;line-height:1.55;margin:0 0 12px;max-width:none;color:#AEB5BF;
-      display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;
-    }
+    .hero p.lede{font-size:.86rem;line-height:1.55;margin:0 0 12px;max-width:none;color:#AEB5BF}
     .hindi{display:none}
     .hero-ctas{flex-direction:column;gap:8px;align-items:stretch}
     .hero-ctas .btn{width:100%;justify-content:center;padding:.62rem .9rem;font-size:.82rem}
@@ -562,11 +562,14 @@
     .prob-stat-card:nth-child(2){display:none}
     .prob-stat-card:nth-child(3){display:none}
     /* "RoachKill targets the nest" — plain centred text, no card box */
-    .prob-stat-card.prob-stat-cta{background:transparent;border:none;padding:8px 0 0;align-items:center;text-align:center}
-    .prob-stat-cta .psc-body{align-items:center}
-    .prob-stat-cta .psc-body b{font-size:.88rem;color:#35C285}
-    .prob-stat-cta .psc-body span{font-size:.8rem;text-align:center}
-    .prob-stat-cta a.btn{display:none}
+    /* 4th point: green text, no card box, centred on mobile */
+    .prob-stat-card.prob-stat-cta{background:transparent;border:none;padding:10px 0 0;justify-content:center}
+    .prob-stat-cta .psc-body{align-items:center;text-align:center;width:100%}
+    .prob-stat-cta .psc-body b{
+      font-size:.88rem;color:#35C285;
+      justify-content:center;flex-wrap:wrap;gap:6px;
+    }
+    .prob-stat-cta .psc-body b svg{flex:none}
 
     /* --- results timeline --- */
     .timeline-card{margin-top:18px;padding:16px 14px;border-radius:14px}
@@ -887,15 +890,18 @@
               <span>Contact kill only. The hidden colony survives and returns in weeks.</span>
             </div>
           </div>
+          <!-- 4th point: green RoachKill CTA -->
+          <div class="prob-stat-card prob-stat-cta">
+            <div class="psc-body">
+              <b>
+                <svg width="15" height="15" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex:none" aria-hidden="true"><path d="M3 8l3.5 3.5L13 4.5" stroke="#35C285" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                RoachKill targets the nest — not just the roach you see
+              </b>
+            </div>
+          </div>
         </div>
 
       </div>
-
-      <!-- green CTA text — desktop + mobile -->
-      <p class="prob-cta-text reveal">
-        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M3 8l3.5 3.5L13 4.5" stroke="#35C285" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        RoachKill targets the nest — not just the roach you see
-      </p>
 
     </div>
   </section>
