@@ -489,19 +489,22 @@
     /* topbar */
     .topbar{font-size:.7rem;padding:.35rem 10px}
 
-    /* hero: tight, readable, product visible early */
-    .hero-eyebrow{font-size:.7rem;margin-bottom:12px;gap:.35rem}
-    .hero-eyebrow::before{width:14px}
-    .hero-inner{padding:28px 0 32px;gap:18px}
-    h1{font-size:clamp(1.9rem,8vw,2.4rem);line-height:1.07}
-    .hero p.lede{font-size:.9rem;margin:12px 0 6px;line-height:1.55;max-width:none}
+    /* hero: two-column split — text left, product right */
+    .hero-eyebrow{font-size:.65rem;margin-bottom:8px;gap:.3rem}
+    .hero-eyebrow::before{width:12px}
+    .hero-inner{grid-template-columns:1fr 118px;padding:22px 0 28px;gap:14px;align-items:start}
+    h1{font-size:1.75rem;line-height:1.06}
+    .hero p.lede{font-size:.82rem;margin:8px 0 5px;line-height:1.5;max-width:none;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
     .hindi{display:none}
-    .hero-ctas{gap:8px;flex-direction:column}
-    .hero-ctas .btn{width:100%;justify-content:center;padding:.7rem 1.2rem;font-size:.88rem}
-    .proof{margin-top:12px;font-size:.8rem;gap:.5rem}
+    .hero-ctas{gap:7px;flex-direction:row;flex-wrap:wrap}
+    .hero-ctas .btn{width:auto;padding:.52rem .95rem;font-size:.8rem}
+    .hero-ctas .btn-ghost{display:none}
+    .proof{margin-top:8px;font-size:.75rem;gap:.35rem}
     .roach-alert{display:none}
-    .stage{max-width:280px;margin:0 auto}
-    .stage-hint{display:none}
+    .stage{max-width:118px;width:118px;margin:0}
+    .stage-glow{display:none}
+    .stage-img-wrap{border-radius:10px;box-shadow:0 8px 28px rgba(0,0,0,.5)}
+    .hp,.stage-hint{display:none}
 
     /* problem: iceberg + solution card only */
     .problem-section{padding:44px 0}
@@ -540,18 +543,20 @@
     .step h3{font-size:.92rem;margin-bottom:2px}
     .step p{font-size:.82rem}
 
-    /* kitchen map */
+    /* kitchen map: fixed height + prominent dots */
     .map-grid{margin-top:22px}
-    .map-info{padding:20px 16px;min-height:auto}
+    .map-info{padding:20px 16px;min-height:248px;display:flex;flex-direction:column}
     .map-info h3{font-size:1rem}
-    .map-info p{font-size:.85rem}
+    .map-info p{font-size:.85rem;flex:1}
     .map-info .tip{font-size:.78rem;padding:8px 12px}
-    .spot-dots button{width:30px;height:30px;font-size:.8rem}
+    .spot-dots{margin-top:auto;padding-top:12px}
+    .spot-dots button{width:32px;height:32px;font-size:.8rem}
 
-    /* products */
-    .prod-grid{margin-top:22px;gap:12px}
-    .prod{padding:18px 14px}
-    .prod-art{height:130px;margin-bottom:14px}
+    /* products: horizontal swipe carousel */
+    .prod-grid{margin-top:22px;display:flex;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none;gap:12px;padding-bottom:12px}
+    .prod-grid::-webkit-scrollbar{display:none}
+    .prod{min-width:74vw;flex:none;scroll-snap-align:start;padding:18px 14px}
+    .prod-art{height:140px;margin-bottom:14px}
     .prod h3{font-size:1rem}
     .prod .desc{font-size:.84rem;margin:6px 0 12px}
     .prod .tag{font-size:.68rem;margin-bottom:14px}
@@ -559,9 +564,17 @@
     .qty-row{gap:8px;flex-wrap:wrap}
     .qty-row .btn{flex:1}
 
-    /* compare: mobile scroll */
-    .vs-table{border-radius:12px;margin-top:28px}
-    th,td{padding:11px 12px;font-size:.8rem}
+    /* compare: card-style rows, no horizontal scroll */
+    .vs-table{border-radius:12px;margin-top:22px;overflow:hidden}
+    #compare table{display:block;min-width:0}
+    #compare thead{display:none}
+    #compare tbody{display:block}
+    #compare tbody tr{display:block;border-bottom:1px solid rgba(255,255,255,.1);padding:10px 0}
+    #compare tbody tr:last-child{border-bottom:none}
+    #compare td{display:flex;align-items:flex-start;gap:6px;padding:3px 14px;border:none;font-size:.8rem;line-height:1.45}
+    #compare td:first-child{display:block;font-weight:700;color:#D0D5DE;font-size:.78rem;padding:8px 14px 4px;border:none}
+    #compare td:nth-child(2)::before{content:"✓ RoachKill  ";font-weight:700;color:#35C285;font-size:.7rem;white-space:nowrap}
+    #compare td:nth-child(3)::before{content:"✕ Spray  ";font-weight:700;color:#5A6070;font-size:.7rem;white-space:nowrap}
 
     /* guarantee */
     .guarantee{padding:26px 18px;gap:16px;flex-direction:column;border-radius:14px}
@@ -570,14 +583,16 @@
     .guarantee p{font-size:.88rem}
     .guarantee .btn{padding:.65rem 1.4rem;font-size:.88rem}
 
-    /* reviews: horizontal snap scroll */
+    /* reviews: horizontal snap scroll, readable size */
     .quotes{display:flex;flex-wrap:nowrap;overflow-x:auto;scroll-snap-type:x mandatory;
       -webkit-overflow-scrolling:touch;scrollbar-width:none;
-      gap:10px;margin-top:24px;padding-bottom:4px}
+      gap:10px;margin-top:22px;padding-bottom:8px}
     .quotes::-webkit-scrollbar{display:none}
-    .quote{min-width:82vw;flex:none;scroll-snap-align:start;padding:20px 16px}
-    .quote p{font-size:.86rem}
-    .quote .who{margin-top:12px;font-size:.8rem}
+    .quote{min-width:72vw;flex:none;scroll-snap-align:start;padding:16px 14px}
+    .quote .stars{font-size:.8rem;letter-spacing:1px;margin-bottom:8px}
+    .quote p{font-size:.8rem;line-height:1.55;color:var(--muted)}
+    .quote .who{margin-top:10px;font-size:.75rem}
+    .quote .who span{font-size:.7rem}
 
     /* faq */
     .faq-list{margin-top:22px}
@@ -598,9 +613,9 @@
   }
 
   @media(max-width:430px){
-    h1{font-size:1.85rem}
-    .hero-inner{padding:24px 0 28px}
-    .stage{max-width:240px}
+    h1{font-size:1.68rem}
+    .hero-inner{grid-template-columns:1fr 96px;gap:10px;padding:20px 0 26px}
+    .stage{max-width:96px;width:96px}
   }
 
   :focus-visible{outline:3px solid var(--red-bright);outline-offset:2px;border-radius:4px}
@@ -824,7 +839,7 @@
               <b style="color:#35C285">RoachKill targets the nest</b>
               <span>The gel reaches where no spray can — and turns every roach into a carrier that infects the entire colony.</span>
             </div>
-            <a class="btn btn-primary" href="#products" style="margin-top:14px;align-self:flex-start">Kill the nest →</a>
+            <p style="margin-top:14px;font-size:.88rem;color:#35C285;font-weight:700;display:flex;align-items:center;gap:6px"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3 8l3.5 3.5L13 4.5" stroke="#35C285" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>RoachKill targets the nest — not just the roach you see</p>
           </div>
         </div>
 
@@ -1388,12 +1403,23 @@
     hotspots.forEach(h=>h.classList.toggle('active',+h.dataset.spot===i));
     dotBtns.forEach(b=>{const on=+b.dataset.spot===i;b.classList.toggle('active',on);b.setAttribute('aria-selected',on);});
   }
+  /* auto-advance kitchen map on mobile */
+  let spotIdx=0, spotTimer=null;
+  function stopSpotTimer(){if(spotTimer){clearInterval(spotTimer);spotTimer=null;}}
+  function startSpotTimer(){
+    if(window.innerWidth>640) return;
+    stopSpotTimer();
+    spotTimer=setInterval(()=>{spotIdx=(spotIdx+1)%SPOTS.length;setSpot(spotIdx);},2800);
+  }
+  function userPickedSpot(i){spotIdx=i;setSpot(i);stopSpotTimer();setTimeout(startSpotTimer,6000);}
+
   hotspots.forEach(h=>{
-    h.addEventListener('click',()=>setSpot(+h.dataset.spot));
-    h.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();setSpot(+h.dataset.spot);}});
+    h.addEventListener('click',()=>userPickedSpot(+h.dataset.spot));
+    h.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();userPickedSpot(+h.dataset.spot);}});
   });
-  dotBtns.forEach(b=>b.addEventListener('click',()=>setSpot(+b.dataset.spot)));
+  dotBtns.forEach(b=>b.addEventListener('click',()=>userPickedSpot(+b.dataset.spot)));
   setSpot(0);
+  startSpotTimer();
 
   /* hamburger nav toggle */
   const navToggle=document.getElementById('navToggle');
