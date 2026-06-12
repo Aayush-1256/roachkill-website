@@ -39,6 +39,13 @@
   /* ---------- header ---------- */
   .topbar{background:var(--red);color:#fff;font-size:.8rem;text-align:center;padding:.5rem 16px;font-weight:500}
   .topbar b{color:#FFE3A6}
+  .tb-item{display:inline}
+  .tb-sep{display:inline}
+  @media(max-width:640px){
+    .topbar{padding:.45rem 12px;line-height:1.6}
+    .tb-sep{display:none}
+    .tb-item{display:block;font-size:.72rem}
+  }
   header{position:sticky;top:0;z-index:60;background:rgba(16,18,22,.85);backdrop-filter:blur(12px);border-bottom:1px solid rgba(255,255,255,.08);transition:background .3s}
   header.light{background:rgba(255,255,255,.92);border-bottom:1px solid var(--line)}
   .nav{display:flex;align-items:center;justify-content:space-between;height:70px;gap:16px}
@@ -675,7 +682,7 @@
 </head>
 <body>
 
-<div class="topbar">Free delivery on orders above ₹299 · <b>Professional-grade nest elimination</b> for Indian homes</div>
+<div class="topbar"><span class="tb-item">Free delivery on orders above ₹299</span><span class="tb-sep"> · </span><span class="tb-item"><b>Professional-grade nest elimination</b> for Indian homes</span></div>
 
 <header id="hdr">
   <div class="wrap nav">
