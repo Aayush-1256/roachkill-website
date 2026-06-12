@@ -478,144 +478,174 @@
     .nav .btn{padding:.45rem .9rem;font-size:.82rem}
   }
 
-  /* ===== MOBILE COMPACT OVERHAUL ===== */
+  /* =============================================
+     MOBILE — single clean block, no patches
+     ============================================= */
   @media(max-width:640px){
-    /* global */
-    .wrap{padding:0 20px}
-    section{padding:52px 0 !important}
-    h2{font-size:clamp(1.5rem,6vw,2rem);max-width:none}
-    .sub{font-size:.93rem}
 
-    /* topbar */
-    .topbar{font-size:.7rem;padding:.35rem 10px}
+    /* --- global --- */
+    .wrap{padding:0 24px}
+    section{padding:48px 0 !important}
+    h2{font-size:1.75rem;line-height:1.15;max-width:none}
+    .sub{font-size:.9rem;line-height:1.6}
+    .kicker{font-size:.72rem}
+    .topbar{font-size:.7rem;padding:.38rem 12px}
 
-    /* hero: two-column split — text left, product right */
-    .hero-eyebrow{font-size:.65rem;margin-bottom:8px;gap:.3rem}
-    .hero-eyebrow::before{width:12px}
-    .hero-inner{grid-template-columns:1fr 118px;padding:22px 0 28px;gap:14px;align-items:start}
-    h1{font-size:1.75rem;line-height:1.06}
-    .hero p.lede{font-size:.82rem;margin:8px 0 5px;line-height:1.5;max-width:none;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
-    .hindi{display:none}
-    .hero-ctas{gap:7px;flex-direction:row;flex-wrap:wrap}
-    .hero-ctas .btn{width:auto;padding:.52rem .95rem;font-size:.8rem}
-    .hero-ctas .btn-ghost{display:none}
-    .proof{margin-top:8px;font-size:.75rem;gap:.35rem}
-    .roach-alert{display:none}
-    .stage{max-width:118px;width:118px;margin:0}
+    /* --- nav --- */
+    .nav{height:58px}
+    .nav .btn{padding:.48rem 1rem;font-size:.82rem}
+
+    /* --- HERO: product image first, then headline + CTA --- */
+    .hero-inner{
+      display:flex;flex-direction:column;
+      padding:28px 0 32px;gap:0;
+    }
+    /* product image floats right, headline wraps around it */
+    .stage{
+      float:right;
+      width:140px;
+      margin:0 0 12px 14px;
+      flex:none;
+    }
     .stage-glow{display:none}
-    .stage-img-wrap{border-radius:10px;box-shadow:0 8px 28px rgba(0,0,0,.5)}
+    .stage-img-wrap{border-radius:14px;box-shadow:0 12px 32px rgba(0,0,0,.55)}
     .hp,.stage-hint{display:none}
 
-    /* problem: iceberg + solution card only */
-    .problem-section{padding:44px 0}
-    .problem-header{margin-bottom:22px}
+    /* text flows naturally around the image */
+    .hero-eyebrow{font-size:.68rem;margin-bottom:10px;gap:.35rem}
+    .hero-eyebrow::before{width:14px}
+    h1{font-size:2rem;line-height:1.07;margin-bottom:10px}
+    .hero p.lede{font-size:.88rem;line-height:1.55;margin:0 0 14px;max-width:none;color:#AEB5BF}
+    .hindi{display:none}
+    .hero-ctas{gap:8px;flex-direction:column;clear:both}
+    .hero-ctas .btn{width:100%;justify-content:center;padding:.78rem 1.2rem;font-size:.9rem}
+    .hero-ctas .btn-ghost{display:none}
+    .proof{margin-top:12px;font-size:.8rem;gap:.5rem;justify-content:flex-start}
+    .roach-alert{display:none}
+
+    /* --- problem section --- */
+    .problem-section{padding:40px 0}
+    .problem-header{margin-bottom:20px}
     .problem-grid{grid-template-columns:1fr;gap:12px}
-    .prob-card-big{padding:20px 16px}
-    .prob-roach-scene{height:64px;margin-bottom:12px}
-    .prob-roach-main{width:72px;height:36px}
+    .prob-card-big{padding:22px 18px}
+    .prob-roach-scene{height:68px;margin-bottom:12px}
+    .prob-roach-main{width:78px;height:39px}
     .prob-hidden-swarm{display:none}
-    .prob-num{font-size:2.2rem}
-    .prob-desc{font-size:.82rem;margin-bottom:10px}
+    .prob-num{font-size:2.4rem}
+    .prob-desc{font-size:.84rem;margin-bottom:10px}
     .prob-stats{gap:10px}
     .prob-stat-card:nth-child(1){display:none}
     .prob-stat-card:nth-child(2){display:none}
     .prob-stat-card:nth-child(3){display:none}
 
-    /* results timeline: compact */
-    .timeline-card{margin-top:22px;padding:18px 14px;border-radius:14px}
-    .day-tabs{gap:6px;margin-bottom:18px}
-    .day-tabs button{min-width:0;flex:1;padding:.42rem .5rem;border-radius:10px;align-items:center}
-    .day-tabs button .dt-label{font-size:.82rem}
+    /* --- results timeline --- */
+    .timeline-card{margin-top:24px;padding:20px 16px;border-radius:14px}
+    .day-tabs{gap:6px;margin-bottom:16px}
+    .day-tabs button{min-width:0;flex:1;padding:.44rem .4rem;border-radius:10px;align-items:center}
+    .day-tabs button .dt-label{font-size:.8rem}
     .day-tabs button .dt-sub{display:none}
-    .colony-grid{grid-template-columns:repeat(10,1fr);gap:3px;padding:10px;border-radius:10px}
-    .colony-legend{gap:10px;font-size:.74rem}
+    .colony-grid{gap:3px;padding:10px;border-radius:10px}
+    .colony-legend{gap:8px;font-size:.72rem;flex-wrap:wrap}
     .tl-big b{font-size:2.4rem}
-    .tl-big span{font-size:.76rem}
-    .tl-headline{font-size:1.05rem}
-    .tl-desc{font-size:.86rem}
+    .tl-headline{font-size:1rem}
+    .tl-desc{font-size:.85rem;line-height:1.6}
 
-    /* how: hide heavy photo, keep compact steps */
+    /* --- how it works --- */
     .how-grid{margin-top:24px;gap:0}
     .how-photo{display:none}
-    .steps{gap:4px}
-    .step{padding:14px 12px;gap:12px}
-    .step .n{width:36px;height:36px;font-size:.88rem;border-radius:10px}
-    .step h3{font-size:.92rem;margin-bottom:2px}
-    .step p{font-size:.82rem}
+    .steps{gap:6px}
+    .step{padding:16px 14px;gap:14px;border-radius:14px}
+    .step .n{width:38px;height:38px;font-size:.9rem;border-radius:10px;flex:none}
+    .step h3{font-size:.95rem;margin-bottom:3px}
+    .step p{font-size:.84rem;line-height:1.55}
 
-    /* kitchen map: fixed height + prominent dots */
-    .map-grid{margin-top:22px}
-    .map-info{padding:20px 16px;min-height:248px;display:flex;flex-direction:column}
-    .map-info h3{font-size:1rem}
-    .map-info p{font-size:.85rem;flex:1}
-    .map-info .tip{font-size:.78rem;padding:8px 12px}
-    .spot-dots{margin-top:auto;padding-top:12px}
+    /* --- kitchen map --- */
+    .map-grid{margin-top:20px}
+    .kitchen-stage{padding:14px}
+    .map-info{padding:22px 18px;min-height:250px;display:flex;flex-direction:column}
+    .map-info .spot-num{width:30px;height:30px;font-size:.85rem;margin-bottom:10px}
+    .map-info h3{font-size:1rem;margin-bottom:6px}
+    .map-info p{font-size:.86rem;line-height:1.55;flex:1}
+    .map-info .tip{font-size:.78rem;padding:8px 12px;margin-top:10px}
+    .spot-dots{margin-top:auto;padding-top:12px;gap:6px}
     .spot-dots button{width:32px;height:32px;font-size:.8rem}
 
-    /* products: horizontal swipe carousel */
-    .prod-grid{margin-top:22px;display:flex;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none;gap:12px;padding-bottom:12px}
+    /* --- products: swipe carousel --- */
+    .prod-grid{
+      margin-top:20px;
+      display:flex;overflow-x:auto;
+      scroll-snap-type:x mandatory;
+      -webkit-overflow-scrolling:touch;
+      scrollbar-width:none;
+      gap:12px;padding-bottom:16px;
+    }
     .prod-grid::-webkit-scrollbar{display:none}
-    .prod{min-width:74vw;flex:none;scroll-snap-align:start;padding:18px 14px}
-    .prod-art{height:140px;margin-bottom:14px}
+    .prod{min-width:76vw;flex:none;scroll-snap-align:start;padding:20px 16px}
+    .prod-art{height:150px;margin-bottom:16px;border-radius:12px}
     .prod h3{font-size:1rem}
-    .prod .desc{font-size:.84rem;margin:6px 0 12px}
+    .prod .desc{font-size:.85rem;margin:6px 0 14px}
     .prod .tag{font-size:.68rem;margin-bottom:14px}
-    .price{font-size:1.3rem}
-    .qty-row{gap:8px;flex-wrap:wrap}
+    .price{font-size:1.35rem}
+    .qty-row{gap:8px}
     .qty-row .btn{flex:1}
 
-    /* compare: card-style rows, no horizontal scroll */
-    .vs-table{border-radius:12px;margin-top:22px;overflow:hidden}
-    #compare table{display:block;min-width:0}
-    #compare thead{display:none}
-    #compare tbody{display:block}
-    #compare tbody tr{display:block;border-bottom:1px solid rgba(255,255,255,.1);padding:10px 0}
-    #compare tbody tr:last-child{border-bottom:none}
-    #compare td{display:flex;align-items:flex-start;gap:6px;padding:3px 14px;border:none;font-size:.8rem;line-height:1.45}
-    #compare td:first-child{display:block;font-weight:700;color:#D0D5DE;font-size:.78rem;padding:8px 14px 4px;border:none}
-    #compare td:nth-child(2)::before{content:"✓ RoachKill  ";font-weight:700;color:#35C285;font-size:.7rem;white-space:nowrap}
-    #compare td:nth-child(3)::before{content:"✕ Spray  ";font-weight:700;color:#5A6070;font-size:.7rem;white-space:nowrap}
+    /* --- compare: stacked cards, no scroll --- */
+    .vs-table{margin-top:20px;border-radius:12px;overflow:hidden}
+    table{min-width:0;display:block}
+    thead{display:none}
+    tbody{display:block}
+    tbody tr{display:block;border-bottom:1px solid rgba(255,255,255,.1);padding:12px 0}
+    tbody tr:last-child{border-bottom:none}
+    td{display:flex;align-items:flex-start;gap:6px;padding:3px 16px;border:none;font-size:.82rem;line-height:1.5}
+    td:first-child{display:block;font-weight:700;color:#D0D5DE;font-size:.8rem;padding:10px 16px 4px;border:none}
+    td:nth-child(2)::before{content:"✓ RoachKill — ";font-weight:700;color:#35C285;font-size:.72rem;white-space:nowrap}
+    td:nth-child(3)::before{content:"✕ Spray — ";font-weight:700;color:#5A6070;font-size:.72rem;white-space:nowrap}
 
-    /* guarantee */
-    .guarantee{padding:26px 18px;gap:16px;flex-direction:column;border-radius:14px}
-    .g-badge{width:76px;height:76px;font-size:.64rem;align-self:flex-start}
-    .guarantee h2{font-size:1.35rem;margin-bottom:8px}
+    /* --- guarantee --- */
+    .guarantee{padding:28px 20px;gap:18px;flex-direction:column;border-radius:16px}
+    .g-badge{width:80px;height:80px;font-size:.66rem;align-self:flex-start}
+    .guarantee h2{font-size:1.4rem;margin-bottom:8px}
     .guarantee p{font-size:.88rem}
-    .guarantee .btn{padding:.65rem 1.4rem;font-size:.88rem}
+    .guarantee .btn{padding:.7rem 1.4rem;font-size:.88rem;margin-top:12px}
 
-    /* reviews: horizontal snap scroll, readable size */
-    .quotes{display:flex;flex-wrap:nowrap;overflow-x:auto;scroll-snap-type:x mandatory;
+    /* --- reviews: swipe, readable --- */
+    .quotes{
+      display:flex;flex-wrap:nowrap;
+      overflow-x:auto;scroll-snap-type:x mandatory;
       -webkit-overflow-scrolling:touch;scrollbar-width:none;
-      gap:10px;margin-top:22px;padding-bottom:8px}
+      gap:12px;margin-top:20px;padding-bottom:8px;
+    }
     .quotes::-webkit-scrollbar{display:none}
-    .quote{min-width:72vw;flex:none;scroll-snap-align:start;padding:16px 14px}
-    .quote .stars{font-size:.8rem;letter-spacing:1px;margin-bottom:8px}
-    .quote p{font-size:.8rem;line-height:1.55;color:var(--muted)}
-    .quote .who{margin-top:10px;font-size:.75rem}
-    .quote .who span{font-size:.7rem}
+    .quote{min-width:78vw;flex:none;scroll-snap-align:start;padding:20px 16px}
+    .quote .stars{font-size:.82rem;margin-bottom:10px}
+    .quote p{font-size:.84rem;line-height:1.6;color:var(--muted)}
+    .quote .who{margin-top:14px;font-size:.8rem}
+    .quote .who span{font-size:.76rem}
 
-    /* faq */
-    .faq-list{margin-top:22px}
-    summary{padding:15px 4px;font-size:.92rem}
-    details .ans{padding:0 4px 18px;font-size:.86rem}
+    /* --- faq --- */
+    .faq-list{margin-top:20px}
+    summary{padding:16px 4px;font-size:.95rem}
+    details .ans{padding:0 4px 18px;font-size:.87rem;line-height:1.65}
 
-    /* final CTA */
-    .final h2{font-size:1.5rem}
+    /* --- final CTA --- */
+    .final h2{font-size:1.55rem}
     .final .sub{font-size:.88rem}
-    .final .btn{font-size:.9rem;padding:.8rem 1.6rem;margin-top:20px}
+    .final .btn{font-size:.92rem;padding:.85rem 1.8rem;margin-top:22px}
 
-    /* footer */
-    footer{padding:40px 0 26px}
-    .f-grid{grid-template-columns:1fr;gap:24px;margin-bottom:28px}
+    /* --- footer --- */
+    footer{padding:44px 0 28px}
+    .f-grid{grid-template-columns:1fr;gap:28px;margin-bottom:32px}
+    footer .logo{font-size:1.1rem}
     footer h4{margin-bottom:10px}
-    footer li{margin-bottom:7px}
-    .legal{font-size:.7rem;line-height:1.65}
+    footer li{margin-bottom:8px}
+    .legal{font-size:.72rem;line-height:1.7}
   }
 
-  @media(max-width:430px){
-    h1{font-size:1.68rem}
-    .hero-inner{grid-template-columns:1fr 96px;gap:10px;padding:20px 0 26px}
-    .stage{max-width:96px;width:96px}
+  @media(max-width:390px){
+    .wrap{padding:0 18px}
+    h1{font-size:1.8rem}
+    .stage{width:120px}
+    .prod{min-width:82vw}
   }
 
   :focus-visible{outline:3px solid var(--red-bright);outline-offset:2px;border-radius:4px}
