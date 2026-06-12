@@ -92,7 +92,9 @@
     content:"";position:absolute;inset:0;pointer-events:none;opacity:.04;
     background-image:radial-gradient(#fff 1px, transparent 1px);background-size:26px 26px;
   }
-  .hero-inner{display:grid;grid-template-columns:1fr 1.05fr;gap:30px;align-items:center;padding:74px 0 90px;position:relative;z-index:1}
+  .hero-inner{display:grid;grid-template-columns:1fr 1.05fr;grid-template-areas:"above img" "below img";gap:0 50px;padding:74px 0 90px;position:relative;z-index:1}
+  .hero-above{grid-area:above;align-self:end;padding-bottom:18px}
+  .hero-below{grid-area:below;align-self:start}
   .hero-eyebrow{display:inline-flex;align-items:center;gap:.55rem;font-size:.8rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--green-bright);margin-bottom:24px}
   .hero-eyebrow::before{content:"";width:26px;height:1.5px;background:var(--green-bright)}
   h1{font-family:var(--display);font-weight:800;font-size:clamp(2.7rem,5.6vw,4.4rem);line-height:1.03;letter-spacing:-.035em}
@@ -127,7 +129,7 @@
   }
 
   /* product stage with hotspots */
-  .stage{position:relative;perspective:1100px}
+  .stage{grid-area:img;align-self:center;position:relative;perspective:1100px}
   .stage-img-wrap{position:relative;border-radius:24px;overflow:hidden;transform-style:preserve-3d;transition:transform .25s ease;box-shadow:0 30px 70px rgba(0,0,0,.5), 0 0 0 1px rgba(255,255,255,.08)}
   .stage-img-wrap img{width:100%;height:auto}
   .stage-glow{position:absolute;inset:-12%;background:radial-gradient(closest-side, rgba(200,16,46,.32), transparent 70%);z-index:-1;filter:blur(14px)}
@@ -164,25 +166,16 @@
   .hp-card.show{opacity:1;transform:none;pointer-events:auto}
   .hp-card b{font-family:var(--display);font-size:.95rem;display:block;margin-bottom:4px}
   .hp-card span{color:var(--muted)}
+  /* tablet: single column, centred */
   @media(max-width:920px){
-    .hero-inner{grid-template-columns:1fr;padding:56px 0 70px}
-    .stage{max-width:480px;margin:0 auto}
-  }
-  @media(max-width:600px){
-    .hero-inner{padding:40px 0 54px}
-    .hero-ctas{flex-direction:column;align-items:flex-start}
-    .hero-ctas .btn{width:100%;justify-content:center}
-  }
-  @media(max-width:480px){
-    h1{font-size:2.4rem}
-    .hero p.lede{font-size:1rem}
-    .stage{max-width:100%}
-    .hp{font-size:.65rem;padding:.28rem .65rem .28rem .28rem;gap:.3rem}
-    .hp .hp-ic{width:20px;height:20px;font-size:.8rem}
-  }
-  @media(max-width:360px){
-    h1{font-size:2rem}
-    .wrap{padding:0 16px}
+    .hero-inner{grid-template-columns:1fr;grid-template-areas:"above" "img" "below";gap:28px;padding:56px 0 64px}
+    .hero-above,.hero-below{text-align:center}
+    .hero-eyebrow{justify-content:center}
+    h1{text-align:center}
+    .hero-ctas{justify-content:center}
+    .proof{justify-content:center}
+    .roach-alert{max-width:500px;margin:16px auto 0}
+    .stage{max-width:440px;margin:0 auto}
   }
 
   /* marquee benefits ribbon */
@@ -495,32 +488,26 @@
     .nav{height:58px}
     .nav .btn{padding:.48rem 1rem;font-size:.82rem}
 
-    /* --- HERO: product image first, then headline + CTA --- */
+    /* --- HERO: centered stack — eyebrow/h1 → product image → description/CTA --- */
     .hero-inner{
-      display:flex;flex-direction:column;
-      padding:28px 0 32px;gap:0;
+      display:flex;flex-direction:column;align-items:center;
+      text-align:center;
+      padding:36px 0 44px;gap:24px;
     }
-    /* product image floats right, headline wraps around it */
-    .stage{
-      float:right;
-      width:140px;
-      margin:0 0 12px 14px;
-      flex:none;
-    }
+    .hero-above{width:100%}
+    .hero-eyebrow{font-size:.7rem;margin-bottom:12px;justify-content:center;gap:.4rem}
+    .hero-eyebrow::before{width:16px}
+    h1{font-size:2.2rem;line-height:1.06;text-align:center}
+    .stage{width:64vw;max-width:240px;flex:none;float:none;margin:0}
     .stage-glow{display:none}
-    .stage-img-wrap{border-radius:14px;box-shadow:0 12px 32px rgba(0,0,0,.55)}
+    .stage-img-wrap{border-radius:18px;box-shadow:0 16px 48px rgba(0,0,0,.65)}
     .hp,.stage-hint{display:none}
-
-    /* text flows naturally around the image */
-    .hero-eyebrow{font-size:.68rem;margin-bottom:10px;gap:.35rem}
-    .hero-eyebrow::before{width:14px}
-    h1{font-size:2rem;line-height:1.07;margin-bottom:10px}
-    .hero p.lede{font-size:.88rem;line-height:1.55;margin:0 0 14px;max-width:none;color:#AEB5BF}
+    .hero-below{width:100%;text-align:left}
+    .hero p.lede{font-size:.92rem;line-height:1.6;margin:0 0 18px;max-width:none;color:#AEB5BF}
     .hindi{display:none}
-    .hero-ctas{gap:8px;flex-direction:column;clear:both}
-    .hero-ctas .btn{width:100%;justify-content:center;padding:.78rem 1.2rem;font-size:.9rem}
-    .hero-ctas .btn-ghost{display:none}
-    .proof{margin-top:12px;font-size:.8rem;gap:.5rem;justify-content:flex-start}
+    .hero-ctas{flex-direction:column;gap:10px}
+    .hero-ctas .btn{width:100%;justify-content:center;padding:.85rem 1.4rem;font-size:.94rem}
+    .proof{margin-top:14px;font-size:.82rem;gap:.5rem}
     .roach-alert{display:none}
 
     /* --- problem section --- */
@@ -643,8 +630,9 @@
 
   @media(max-width:390px){
     .wrap{padding:0 18px}
-    h1{font-size:1.8rem}
-    .stage{width:120px}
+    h1{font-size:1.95rem}
+    .hero-inner{padding:28px 0 36px;gap:18px}
+    .stage{width:58vw;max-width:210px}
     .prod{min-width:82vw}
   }
 
@@ -690,9 +678,29 @@
   <!-- HERO -->
   <section class="hero" style="padding:0">
     <div class="wrap hero-inner">
-      <div>
+
+      <!-- headline block -->
+      <div class="hero-above">
         <span class="hero-eyebrow">Professional-grade nest elimination</span>
         <h1>One Dot.<br><span class="red">All Gone.</span></h1>
+      </div>
+
+      <!-- product image (middle on mobile, right column on desktop) -->
+      <div class="stage" id="stage">
+        <div class="stage-glow" aria-hidden="true"></div>
+        <div class="stage-img-wrap" id="stageImg">
+          <img src="https://d8j0ntlcm91z4.cloudfront.net/user_3BtV5zejgUHIPSzmtAtuMSelE6K/hf_20260611_115359_889d1c4a-1aea-45b9-89ec-70dde85788ff.png" alt="RoachKill nest elimination gel — 20g applicator syringe with product carton" width="900" height="900">
+          <button class="hp" style="top:12%;left:4%" data-hp="0" aria-label="Benefit: precision applicator"><span class="hp-ic">+</span>Precision tip</button>
+          <button class="hp" style="top:36%;right:2%" data-hp="1" aria-label="Benefit: transfer formula"><span class="hp-ic">+</span>Transfer formula</button>
+          <button class="hp" style="bottom:32%;left:2%" data-hp="2" aria-label="Benefit: odorless"><span class="hp-ic">+</span>100% odorless</button>
+          <button class="hp" style="bottom:10%;right:8%" data-hp="3" aria-label="Benefit: 40 plus applications"><span class="hp-ic">+</span>40+ applications</button>
+          <div class="hp-card" id="hpCard" role="status"></div>
+          <div class="stage-hint" id="stageHint">👆 Tap the labels to explore</div>
+        </div>
+      </div>
+
+      <!-- description + CTAs block -->
+      <div class="hero-below">
         <p class="lede">The cockroach you see is only <strong>5% of the infestation</strong>. RoachKill gel reaches the hidden nest behind your kitchen — and ends the entire colony at its source. Quietly. Without a single spray.</p>
         <p class="hindi">रोचकिल — जड़ से ख़त्म</p>
         <div class="hero-ctas">
@@ -703,8 +711,6 @@
           <span class="stars" aria-hidden="true">★★★★★</span>
           <span><b>4.6/5</b> from 2,300+ Indian households</span>
         </div>
-
-        <!-- cockroach alert card -->
         <div class="roach-alert">
           <div class="roach-alert-roaches" aria-hidden="true">
             <!-- roach 1 -->
@@ -722,20 +728,7 @@
         </div>
       </div>
 
-      <div class="stage" id="stage">
-        <div class="stage-glow" aria-hidden="true"></div>
-        <div class="stage-img-wrap" id="stageImg">
-          <img src="https://d8j0ntlcm91z4.cloudfront.net/user_3BtV5zejgUHIPSzmtAtuMSelE6K/hf_20260611_115359_889d1c4a-1aea-45b9-89ec-70dde85788ff.png" alt="RoachKill nest elimination gel — 20g applicator syringe with product carton" width="900" height="900">
-          <!-- benefit hotspots pinned on the product -->
-          <button class="hp" style="top:12%;left:4%" data-hp="0" aria-label="Benefit: precision applicator"><span class="hp-ic">+</span>Precision tip</button>
-          <button class="hp" style="top:36%;right:2%" data-hp="1" aria-label="Benefit: transfer formula"><span class="hp-ic">+</span>Transfer formula</button>
-          <button class="hp" style="bottom:32%;left:2%" data-hp="2" aria-label="Benefit: odorless"><span class="hp-ic">+</span>100% odorless</button>
-          <button class="hp" style="bottom:10%;right:8%" data-hp="3" aria-label="Benefit: 40 plus applications"><span class="hp-ic">+</span>40+ applications</button>
-          <div class="hp-card" id="hpCard" role="status"></div>
-          <div class="stage-hint" id="stageHint">👆 Tap the labels to explore</div>
-        </div>
-      </div>
-    </div>
+    </div><!-- /hero-inner -->
 
     <!-- benefits ribbon -->
     <div class="ribbon" aria-hidden="true">
