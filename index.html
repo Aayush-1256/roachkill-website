@@ -508,7 +508,7 @@
     .stage{width:72vw;max-width:270px;flex:none;float:none;margin:0;overflow:visible}
     .stage-glow{display:none}
     .stage-img-wrap{border-radius:16px;box-shadow:0 14px 40px rgba(0,0,0,.6);overflow:visible}
-    .stage-hint{display:none}
+    .stage-hint{font-size:.6rem;padding:.24rem .65rem;top:8px}
     /* hotspot: tappable circle — shows label-only popup below image */
     .hp{display:inline-flex;font-size:0;padding:.28rem;gap:0;border-radius:50%;background:rgba(255,255,255,.92)}
     .hp .hp-ic{font-size:.82rem;width:20px;height:20px}
@@ -629,7 +629,8 @@
     #compare td:first-child{font-size:.72rem !important;color:#C8CDD5}
     #compare tbody tr:last-child td{border-bottom:none}
 
-    /* --- guarantee --- */
+    /* --- guarantee: padding-top:0 is overridden by !important above, fix it --- */
+    .guarantee-section{padding-top:0 !important;padding-bottom:40px !important}
     .guarantee{padding:24px 18px;gap:16px;flex-direction:column;border-radius:14px}
     .g-badge{width:72px;height:72px;font-size:.62rem;align-self:flex-start}
     .guarantee h2{font-size:1.3rem;margin-bottom:6px}
@@ -1264,6 +1265,11 @@
 <div class="toast" id="toast" role="status" aria-live="polite"><span class="ok">✓</span><span id="toastMsg">Added to cart</span></div>
 
 <script>
+  /* Always open from top — never restore a #hash scroll position on refresh */
+  if('scrollRestoration' in history) history.scrollRestoration='manual';
+  if(location.hash) history.replaceState(null,'',location.pathname);
+  window.scrollTo(0,0);
+
   const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   /* header switches to light after hero */
