@@ -649,19 +649,25 @@
     .guarantee p{font-size:.85rem}
     .guarantee .btn{padding:.65rem 1.2rem;font-size:.85rem;margin-top:10px}
 
-    /* --- reviews: full-width single card, swipe for next --- */
+    /* --- reviews: one full card visible, swipe to next --- */
+    #reviews .wrap{overflow:hidden}
     .quotes{
       display:flex;flex-wrap:nowrap;
       overflow-x:auto;scroll-snap-type:x mandatory;
       -webkit-overflow-scrolling:touch;scrollbar-width:none;
-      gap:12px;margin-top:16px;padding-bottom:4px;
+      gap:0;margin-top:16px;padding-bottom:0;
+      width:100%;
     }
     .quotes::-webkit-scrollbar{display:none}
-    .quote{min-width:100%;flex:none;scroll-snap-align:start;padding:22px 20px;box-sizing:border-box}
-    .quote .stars{font-size:.82rem;letter-spacing:1px;margin-bottom:10px}
-    .quote p{font-size:.88rem;line-height:1.65;color:var(--muted)}
-    .quote .who{margin-top:14px;font-size:.82rem}
-    .quote .who span{font-size:.76rem}
+    .quote{
+      min-width:100%;flex:none;scroll-snap-align:start;
+      padding:24px 20px;box-sizing:border-box;
+      border-radius:16px;
+    }
+    .quote .stars{font-size:.84rem;letter-spacing:1px;margin-bottom:12px}
+    .quote p{font-size:.88rem;line-height:1.68;color:var(--muted)}
+    .quote .who{margin-top:16px;font-size:.82rem;font-weight:600;color:var(--ink)}
+    .quote .who span{display:block;font-size:.76rem;font-weight:400;color:var(--muted);margin-top:2px}
 
     /* --- faq --- */
     .faq-list{margin-top:16px}
